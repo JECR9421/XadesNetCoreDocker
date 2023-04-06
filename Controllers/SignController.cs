@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using XadesNetCoreDocker.Models;
+using XadesNetCoreDocker.Services;
+using XadesNetCoreDocker.Utils;
 
 namespace FactureronlineUtility.Controllers
 {
@@ -50,15 +52,15 @@ namespace FactureronlineUtility.Controllers
             //var cloud = "fedocumentsstorage/DSign/Temp/" + pathEndFileWork;
             try
             {
-                //var executeFirma = new Firma(_workPath,_dirSeparator);
-                //var xml = _workPath + _dirSeparator + request.clave + ".xml";
-                //if (!string.IsNullOrWhiteSpace(request.xmlToSign))
-                //{
-                //    _utility.Base64toFile(request.xmlToSign, xml);
-                //    var uploadResult = _digital.UploadFile("fedocumentsstorage/DSign/Temp/" + pathEndFileWork, xml, request.clave + ".xml");
-                //    if (!uploadResult)
-                //        throw new Exception("Fail to upload cloud xml pre sign");
-                //}
+                var executeSign = new XadesSignService();
+                var xml = _workPath + _dirSeparator + request.clave + ".xml";
+                if (!string.IsNullOrWhiteSpace(request.xmlToSign))
+                {
+                    Utility.Base64toFile(request.xmlToSign, xml);
+                    //var uploadResult = _digital.UploadFile("fedocumentsstorage/DSign/Temp/" + pathEndFileWork, xml, request.clave + ".xml");
+                    //if (!uploadResult)
+                    //    throw new Exception("Fail to upload cloud xml pre sign");
+                }
                 //else if(!System.IO.File.Exists(xml)) 
                 //{
                 //    var downloadResult = _digital.DowloadFile("fedocumentsstorage/DSign/Temp/" + pathEndFileWork, xml, request.clave + ".xml");
@@ -66,7 +68,7 @@ namespace FactureronlineUtility.Controllers
                 //        throw new Exception("Fail downloading file");
                 //}
 
-                //var result = executeFirma.Firmar(request.base64p12, request.p12pass, request.clave+".p12",xml);
+                var result = executeSign.ExecuteSign(request.base64p12, request.p12pass, request.clave+".p12",xml);
                 //var xmlFileInfo = _workPath + _dirSeparator + request.clave + "_signed.xml";
                 //var uploadResult2 = _digital.UploadFile("fedocumentsstorage/DSign/Temp/" + pathEndFileWork, xmlFileInfo, request.clave + "_signed.xml");
                 //if (!uploadResult2)
@@ -77,19 +79,15 @@ namespace FactureronlineUtility.Controllers
                 //var msg = "{\"Error\": \"0\", \"FileSigned\" : \"" + result.Base64 + "\"}";
                 //JObject json = JObject.Parse(msg);
                 //return json;
-                JObject response = new JObject();
-                System.IO.File.WriteAllText(_workPath + _dirSeparator + "TEST.txt", "a");
-                var txt = System.IO.File.ReadAllText(_workPath + _dirSeparator + "TEST.txt");
-                response.Add("workpath", _workPath);
-                response.Add("text", txt);
-                return response;
+                var response = new XadesRestApiResponse { FileSigned = result.Base64 };
+                return JObject.FromObject(response);
                 
             }
             catch (Exception ex)
             {
+                var response = new XadesRestApiResponse { Error = ex.Message.Replace('\\', '/')};
                 String msg = "{\"Error\": \"" + ex.Message.Replace('\\', '/') + "\"}";
-                JObject json = JObject.Parse(msg);
-                return json;
+                return JObject.FromObject(response);
             }
         }
     }
