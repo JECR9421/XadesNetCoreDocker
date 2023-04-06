@@ -18,7 +18,8 @@
 
   <ItemGroup>
     <Reference Include="DigitalOceanUtil">
-      <HintPath>..\JECR9421\DigitalOceanUtil\DigitalOceanUtil\bin\Debug\netstandard2.0\DigitalOceanUtil.dll</HintPath>
+      <HintPath>DigitalOceanUtil.dll</HintPath>
+      <Private>true</Private>
     </Reference>
   </ItemGroup>
 

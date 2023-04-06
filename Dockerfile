@@ -8,6 +8,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["XadesNetCoreDocker.csproj", ""]
+COPY ["DigitalOceanUtil.dll", ""]
 RUN dotnet restore "./XadesNetCoreDocker.csproj"
 COPY . .
 WORKDIR "/src/."
