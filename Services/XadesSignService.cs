@@ -18,7 +18,7 @@ namespace XadesNetCoreDocker.Services
 
         public XadesSignService()
         {
-            _dirSeparator = Path.PathSeparator.ToString();
+            _dirSeparator = "/";
             var tempFilePath = Path.GetTempFileName();
             FileInfo tempInfo = new FileInfo(tempFilePath);
             _workPath = tempInfo.DirectoryName;

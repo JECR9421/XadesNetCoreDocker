@@ -28,7 +28,7 @@ namespace FactureronlineUtility.Controllers
         public SignController(IConfiguration configuration) 
         {
             _configuration = configuration;
-            _dirSeparator = Path.PathSeparator.ToString();
+            _dirSeparator = "/";
             var tempFilePath = Path.GetTempFileName();
             FileInfo tempInfo = new FileInfo(tempFilePath);
             _workPath = tempInfo.DirectoryName;
@@ -43,7 +43,7 @@ namespace FactureronlineUtility.Controllers
         public JObject PostXades([FromBody]SignRequest request)
         {
             var pathEndFileWork = Utility.getFechaFromClave(request.clave);
-            var cloud = "fedocumentsstorage/DSign/Temp-Web2/" + pathEndFileWork;
+            var cloud = "fedocumentsstorage/DSign/Temp/" + pathEndFileWork;
             try
             {
                 var executeSign = new XadesSignService();
