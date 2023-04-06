@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?><FacturaElectronica xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.3/facturaElectronica" xsi:schemaLocation="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.3/facturaElectronica https://tribunet.hacienda.go.cr/docs/esquemas/2017/v4.3/facturaElectronica.xsd">
+  <Clave>50630112000300404576000100002010000286470154150411</Clave>
+  <CodigoActividad>523402</CodigoActividad>
+  <NumeroConsecutivo>00100002010000286470</NumeroConsecutivo>
+  <FechaEmision>2020-11-30T21:37:03</FechaEmision>
+  <Emisor>
+    <Nombre>COOPEPURISCAL R.L.</Nombre>
+    <Identificacion>
+      <Tipo>02</Tipo>
+      <Numero>3004045760</Numero>
+    </Identificacion>
+    <Ubicacion>
+      <Provincia>1</Provincia>
+      <Canton>04</Canton>
+      <Distrito>01</Distrito>
+      <Barrio>01</Barrio>
+      <OtrasSenas>ALMACEN, 25SUR ANTIGUA IGLESIA CATOLICA</OtrasSenas>
+    </Ubicacion>
+    <Telefono>
+      <CodigoPais>506</CodigoPais>
+      <NumTelefono>24166071</NumTelefono>
+    </Telefono>
+    <CorreoElectronico>fecoopepuriscal@gmail.com</CorreoElectronico>
+  </Emisor>
+  <Receptor>
+    <Nombre>VALVERDE FLORES MANUEL</Nombre>
+    <Identificacion>
+      <Tipo>01</Tipo>
+      <Numero>109700356</Numero>
+    </Identificacion>
+    <Ubicacion>
+      <Provincia>1</Provincia>
+      <Canton>04</Canton>
+      <Distrito>01</Distrito>
+      <Barrio>01</Barrio>
+      <OtrasSenas>300 N.O. SUPER BELFORT B.S.I.</OtrasSenas>
+    </Ubicacion>
+    <Telefono>
+      <CodigoPais>506</CodigoPais>
+      <NumTelefono>87856491</NumTelefono>
+    </Telefono>
+    <CorreoElectronico>manvalverde@hotmail.com</CorreoElectronico>
+  </Receptor>
+  <CondicionVenta>02</CondicionVenta>
+  <PlazoCredito>30</PlazoCredito>
+  <MedioPago>01</MedioPago>
+ 
+  <DetalleServicio><LineaDetalle>
+  <NumeroLinea>1</NumeroLinea>
+  <Codigo>4412903010100</Codigo>
+  <CodigoComercial>
+    <Tipo>01</Tipo>
+    <Codigo>040010</Codigo>
+  </CodigoComercial>
+  <Cantidad>1.00000</Cantidad>
+  <UnidadMedida>Unid</UnidadMedida>
+  <Detalle>ZAPATO BOTIN OWEL CAFE QUEMADN 605800000</Detalle>
+  <PrecioUnitario>24995.00000</PrecioUnitario>
+  <MontoTotal>24995.00000</MontoTotal>
+  <SubTotal>24995.00000</SubTotal>
+  <Impuesto>
+  <Codigo>01</Codigo>
+  <CodigoTarifa>08</CodigoTarifa>
+  <Tarifa>13</Tarifa>
+  <Monto>3249.35000</Monto>
+</Impuesto>
+
+  <ImpuestoNeto>3249.35</ImpuestoNeto>
+  <MontoTotalLinea>28244.35000</MontoTotalLinea>
+</LineaDetalle>
+ <LineaDetalle>
+  <NumeroLinea>2</NumeroLinea>
+  <Codigo>3464100000000</Codigo>
+  <CodigoComercial>
+    <Tipo>01</Tipo>
+    <Codigo>021183</Codigo>
+  </CodigoComercial>
+  <Cantidad>1.00000</Cantidad>
+  <UnidadMedida>Unid</UnidadMedida>
+  <Detalle>ABONO 10-50-10 1/2KL. FOLIAR</Detalle>
+  <PrecioUnitario>2935.00000</PrecioUnitario>
+  <MontoTotal>2935.00000</MontoTotal>
+  <SubTotal>2935.00000</SubTotal>
+  <Impuesto>
+  <Codigo>01</Codigo>
+  <CodigoTarifa>08</CodigoTarifa>
+  <Tarifa>13</Tarifa>
+  <Monto>381.55000</Monto>
+</Impuesto>
+
+  <ImpuestoNeto>381.55</ImpuestoNeto>
+  <MontoTotalLinea>3316.55000</MontoTotalLinea>
+</LineaDetalle>
+ </DetalleServicio>
+  <ResumenFactura>
+    <CodigoTipoMoneda>
+      <CodigoMoneda>CRC</CodigoMoneda>
+      <TipoCambio>1</TipoCambio>
+    </CodigoTipoMoneda>
+    <TotalServGravados>0.00000</TotalServGravados>
+    <TotalServExentos>0.00000</TotalServExentos>
+    <TotalServExonerado>0.00000</TotalServExonerado>
+    <TotalMercanciasGravadas>27930.00000</TotalMercanciasGravadas>
+    <TotalMercanciasExentas>0.00000</TotalMercanciasExentas>
+    <TotalMercExonerada>0.00000</TotalMercExonerada>
+    <TotalGravado>27930.00000</TotalGravado>
+    <TotalExento>0.00000</TotalExento>
+    <TotalExonerado>0.00000</TotalExonerado>
+    <TotalVenta>27930.00000</TotalVenta>
+    <TotalDescuentos>0.00000</TotalDescuentos>
+    <TotalVentaNeta>27930.00000</TotalVentaNeta>
+    <TotalImpuesto>3630.90000</TotalImpuesto>
+    <TotalIVADevuelto>0.00000</TotalIVADevuelto>
+    <TotalOtrosCargos>0.00000</TotalOtrosCargos>
+    <TotalComprobante>31560.90000</TotalComprobante>
+  </ResumenFactura>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="Signature-a08373fd-8180-4c0f-8fbc-d511894577f2"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><ds:Reference Id="Reference-7f356025-9c38-4e81-a8dc-3a2761ec401c" URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>oEsVXJuBHoVrv4o7GkuFogIDFAZrPZGIX35+d/d0B5c=</ds:DigestValue></ds:Reference><ds:Reference Id="ReferenceKeyInfo" URI="#KeyInfoId-Signature-a08373fd-8180-4c0f-8fbc-d511894577f2"><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>dcUN9w3Cp3wd00AxglCX8Ky5fkZZC8IQAUFY7gfsh2c=</ds:DigestValue></ds:Reference><ds:Reference Type="http://uri.etsi.org/01903#SignedProperties" URI="#SignedProperties-Signature-a08373fd-8180-4c0f-8fbc-d511894577f2"><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>5XvMXCa/Gk3JPnkhpqPxUjXQK1Z5rxkgkgDSzbtdjt8=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue Id="SignatureValue-a08373fd-8180-4c0f-8fbc-d511894577f2">imldFw5dvYUZQrfsK/EsIt3MwN6n+cE+wSbh7eJg+qlxo6rjyQqw602zy8Ekbwv61PfUNvMyl+zMIg//iAyALOvuEX+7CCMgs9lIEtmneFvgDCgoMEBS0YcAZfAjt4EC16RUpP+57jnojg2C923eUJoZal+rRItcTmF+mJkvtD1gzzKnKVps6MpH6OFEyN5/gaU5wKMBkvUgPB0GcXpHghEYjAxKTcaVD/zX9KTQP61S76RNBEs4Khf5Fn1zuUNwmHqJWRoOY0Y4XtZhh1ez2SBnGpKuyiHDLRyKt3AhVICWslyFjYSWUM0OCMnWLjCZFa4zRJ6okXaLc0KRMHQ+uA==</ds:SignatureValue><ds:KeyInfo Id="KeyInfoId-Signature-a08373fd-8180-4c0f-8fbc-d511894577f2"><ds:X509Data><ds:X509Certificate>MIIFXzCCA0egAwIBAgIGAWt4jQ8LMA0GCSqGSIb3DQEBCwUAMGwxCzAJBgNVBAYTAkNSMSkwJwYDVQQKDCBNSU5JU1RFUklPIERFIEhBQ0lFTkRBIC0gU0FOREJPWDEMMAoGA1UECwwDREdUMSQwIgYDVQQDDBtDQSBQRVJTT05BIEZJU0lDQSAtIFNBTkRCT1gwHhcNMTkwNjIxMDU0MDM4WhcNMjEwNjIwMDU0MDM4WjCBpzEZMBcGA1UEBRMQQ1BGLTAxLTE1NjItMDQwNDEXMBUGA1UEBAwOQ0FTVElMTE8gUk9KQVMxFjAUBgNVBCoMDUpFU1VTIEVTVEVCQU4xCzAJBgNVBAYTAkNSMRcwFQYDVQQKDA5QRVJTT05BIEZJU0lDQTEMMAoGA1UECwwDQ1BGMSUwIwYDVQQDDBxKRVNVUyBFU1RFQkFOIENBU1RJTExPIFJPSkFTMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm/H+QHi5xTQuGdAaqtF12ZhpTJWwsDIhAwCQ3+gbmdONktcowJAz8LsS0z1gvm/KLGHu6CsNzZK1Dd7+x1lu4nQLwFbNM/up6s9WZvHpCAZV7pFvvgXznfXcVwUkEWN3ExAtSindyyCOsKjLc0qDIJtWUtvdunUCxN3U4iWmem+regxsyoEb4RV9pEYO2WyUim8Oud0XCav5vYJSNiWwCbu6IkqclzmlYbowOl3KIMnbgHlwMHb/SOqyccAYj0AOB+AsK+lUyEil0khloiuRD1gqhexjAJXVyAz5xtYAZiFvkKX14MkLJV33QIdZBPW8sRciLJym/Z1EmC3J+aapXwIDAQABo4HKMIHHMB8GA1UdIwQYMBaAFEYj0kRPv1dZIeS/k9Uwm5VM4/eHMB0GA1UdDgQWBBRpj+6E9ZVhVtGZMO8iwM4jdfcMZjALBgNVHQ8EBAMCBsAwEwYDVR0lBAwwCgYIKwYBBQUHAwQwYwYIKwYBBQUHAQEEVzBVMFMGCCsGAQUFBzAChkdodHRwczovL3BraS5jb21wcm9iYW50ZXNlbGVjdHJvbmljb3MuZ28uY3Ivc3RhZy9pbnRlcm1lZGlhdGUtcGYtcGVtLmNydDANBgkqhkiG9w0BAQsFAAOCAgEAOOyAa1w4fTzwAmUpRe6EsVWn7e/MpONiGvruFBKc/r52z6r+FsJZWCtWFYB8SY/v2B86cdXNrd9THmFJXEW4SI+Ii/utEfBUU6W1Oizh0eOZo0ErpIhgEKwM75YWRA55eCXfzHawSQ8+90a1+3JvgXLJ+WZ1/MUVQA2TmL8pWbQ7dXjDIBnm7Vi9vEc1EF4Vwp/Wf4XqZRu0Yd5Una7pM87GrTmDrqcesnVpsCqWXqx6XdPooYIGZlgNj5W6eY3OkQR4mdYEKrl2LlH2M+dIrdIx7CqRw+X11PEmv+A+Lj3CmIgzgPjNsecfGUWWzgL2dyAoHSJMmaVkaBjJpG9TFIklLzAvhj1iAoIxw3Vl3NgVUfr5Uj+xc2bCVu1t0c4cJtyzTYVH1RPJkAJH+zUxs4V4KIXIoV8BWa+BUVgK5Q/iLnHU+agJ4iHSfPqzp0S3tGFFbskEZIf0ajREx4qXl+io4A7YQQ9+Golra0DKFRdV4bCZAYOqsJeoyjZPZGCNv/p89ITQlPbALXkG2wSgvTjk0wwAC2itv6+7HPYMdu2EAD/Xew8CcNk6b+ufKV21ZXIG35Y4yrPFJBnVb8ONwRxB/Qj5DWuCqQ63UH2C9DmNCyB55wSK5Ix9drnRdPOoj25lpraNYze3laKnO5iuiYt2RZRrygFdSKDq0Vcpatk=</ds:X509Certificate></ds:X509Data><ds:KeyValue><ds:RSAKeyValue><ds:Modulus>m/H+QHi5xTQuGdAaqtF12ZhpTJWwsDIhAwCQ3+gbmdONktcowJAz8LsS0z1gvm/KLGHu6CsNzZK1Dd7+x1lu4nQLwFbNM/up6s9WZvHpCAZV7pFvvgXznfXcVwUkEWN3ExAtSindyyCOsKjLc0qDIJtWUtvdunUCxN3U4iWmem+regxsyoEb4RV9pEYO2WyUim8Oud0XCav5vYJSNiWwCbu6IkqclzmlYbowOl3KIMnbgHlwMHb/SOqyccAYj0AOB+AsK+lUyEil0khloiuRD1gqhexjAJXVyAz5xtYAZiFvkKX14MkLJV33QIdZBPW8sRciLJym/Z1EmC3J+aapXw==</ds:Modulus><ds:Exponent>AQAB</ds:Exponent></ds:RSAKeyValue></ds:KeyValue></ds:KeyInfo><ds:Object Id="XadesObjectId-52d7e9d4-42de-44ab-a201-1b8e17d108d0"><xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" Id="QualifyingProperties-673ebbca-9907-479b-918e-25eaf6333e16" Target="#Signature-a08373fd-8180-4c0f-8fbc-d511894577f2"><xades:SignedProperties Id="SignedProperties-Signature-a08373fd-8180-4c0f-8fbc-d511894577f2"><xades:SignedSignatureProperties><xades:SigningTime>2023-04-06T21:57:54+00:00</xades:SigningTime><xades:SigningCertificate><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><ds:DigestValue>PHh7YNOwuyQ1y+NcYRuDF9D/o7pk8+y5E8m8nYSMFdQ=</ds:DigestValue></xades:CertDigest><xades:IssuerSerial><ds:X509IssuerName>CN=CA PERSONA FISICA - SANDBOX, OU=DGT, O=MINISTERIO DE HACIENDA - SANDBOX, C=CR</ds:X509IssuerName><ds:X509SerialNumber>1561095638795</ds:X509SerialNumber></xades:IssuerSerial></xades:Cert></xades:SigningCertificate><xades:SignaturePolicyIdentifier><xades:SignaturePolicyId><xades:SigPolicyId><xades:Identifier>https://tribunet.hacienda.go.cr/docs/esquemas/2016/v4.1/Resolucion_Comprobantes_Electronicos_DGT-R-48-2016.pdf</xades:Identifier><xades:Description /></xades:SigPolicyId><xades:SigPolicyHash><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><ds:DigestValue>Ohixl6upD6av8N7pEvDABhEL6hM=</ds:DigestValue></xades:SigPolicyHash></xades:SignaturePolicyId></xades:SignaturePolicyIdentifier></xades:SignedSignatureProperties><xades:SignedDataObjectProperties><xades:DataObjectFormat ObjectReference="#Reference-7f356025-9c38-4e81-a8dc-3a2761ec401c"><xades:MimeType>text/xml</xades:MimeType><xades:Encoding>UTF-8</xades:Encoding></xades:DataObjectFormat></xades:SignedDataObjectProperties></xades:SignedProperties></xades:QualifyingProperties></ds:Object></ds:Signature></FacturaElectronica>

@@ -45,7 +45,7 @@ namespace XadesNetCoreDocker.Services
 
             var fs = new FileStream((xmlToSignPath), FileMode.Open);
             FirmaXadesNetCore.Signature.SignatureDocument docFirmado = xadesService.Sign(fs, parametros);
-            var xmlFileInfo = _workPath + _dirSeparator + Path.GetFileNameWithoutExtension(xmlToSignPath) + "_signed.xml";
+            var xmlFileInfo = Path.GetFileNameWithoutExtension(xmlToSignPath) + "_signed.xml";
             docFirmado.Save(xmlFileInfo);
 
             return new SignResult()

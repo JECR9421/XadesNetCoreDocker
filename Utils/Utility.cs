@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -38,6 +39,25 @@ namespace XadesNetCoreDocker.Utils
             {
                 throw new Exception($"Error creating base 64 string from file:{path}\n{ex.Message}");
             }
+        }
+
+        public static string getAWSConfig(IConfiguration _configuration, string attr)
+        {
+            var serviceConfig = _configuration.GetSection("AWS")
+               .GetChildren()
+               .AsEnumerable();
+
+            return (from cs in serviceConfig
+                    where cs.Key.Equals(attr)
+                    select cs.Value).FirstOrDefault();
+        }
+
+        public static string getFechaFromClave(string clave)
+        {
+            var day = clave.Substring(3, 2);
+            var month = clave.Substring(5, 2);
+            var claveYear = 2000 + Int16.Parse(clave.Substring(7, 2));
+            return day + "-" + month + "-" + claveYear;
         }
 
     }
