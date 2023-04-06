@@ -44,6 +44,7 @@ namespace FactureronlineUtility.Controllers
         {
             var pathEndFileWork = Utility.getFechaFromClave(request.clave);
             var cloud = "fedocumentsstorage/DSign/Temp/" + pathEndFileWork;
+            var p12File = _workPath + _dirSeparator + request.clave + ".p12";
             try
             {
                 var executeSign = new XadesSignService();
@@ -62,12 +63,19 @@ namespace FactureronlineUtility.Controllers
                         throw new Exception("Fail downloading file");
                 }
 
-                var result = executeSign.ExecuteSign(request.base64p12, request.p12pass, request.clave+".p12",xml);
+                var result = executeSign.ExecuteSign(request.base64p12, request.p12pass, p12File, xml);
                 var xmlFileInfo = _workPath + _dirSeparator + request.clave + "_signed.xml";
                 var uploadResult2 = _digital.UploadFile(cloud, result.Path, request.clave + "_signed.xml");
                 if (!uploadResult2)
                     throw new Exception("Fail to upload cloud xml signed");
+                else
+                {
+                    System.IO.File.Delete(xml);
+                    System.IO.File.Delete(result.Path);
+                    System.IO.File.Delete(p12File);
+                }
                 var response = new XadesRestApiResponse { FileSigned = result.Base64 };
+                
                 return JObject.FromObject(response);
                 
             }

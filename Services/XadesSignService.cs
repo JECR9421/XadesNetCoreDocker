@@ -25,7 +25,7 @@ namespace XadesNetCoreDocker.Services
         }
         public SignResult ExecuteSign(string llaveCriptografica, string passP12, string p12FileName, string xmlToSignPath)
         {
-            var p12File = _workPath + _dirSeparator + p12FileName;
+            var p12File = p12FileName;
             if (File.Exists(p12File))
                     File.Delete(p12File);
                 Utility.Base64toFile(llaveCriptografica, p12File);
