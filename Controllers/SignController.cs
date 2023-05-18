@@ -74,7 +74,7 @@ namespace FactureronlineUtility.Controllers
                     System.IO.File.Delete(result.Path);
                     System.IO.File.Delete(p12File);
                 }
-                var response = new XadesRestApiResponse { FileSigned = result.Base64 };
+                var response = new XadesRestApiResponse { Error = "0", FileSigned = result.Base64 };
                 
                 return JObject.FromObject(response);
                 
