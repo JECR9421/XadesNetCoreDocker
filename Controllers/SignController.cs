@@ -32,8 +32,8 @@ namespace FactureronlineUtility.Controllers
             var tempFilePath = Path.GetTempFileName();
             FileInfo tempInfo = new FileInfo(tempFilePath);
             _workPath = tempInfo.DirectoryName;
-            _digital = new DigitalOceanUtil.DigitalOceanMannager(Utility.getAWSConfig(_configuration, "AccessKey"),
-                 Utility.getAWSConfig(_configuration, "SecretKey"),
+            _digital = new DigitalOceanUtil.DigitalOceanMannager(Environment.GetEnvironmentVariable("AWS_ACCESS_KEY"),
+                 Environment.GetEnvironmentVariable("AWS_SECRET_KEY"),
                   Amazon.RegionEndpoint.USWest2,
                  Utility.getAWSConfig(_configuration, "UrlBucket")
                 );
@@ -43,7 +43,7 @@ namespace FactureronlineUtility.Controllers
         public JObject PostXades([FromBody]SignRequest request)
         {
             var pathEndFileWork = Utility.getFechaFromClave(request.clave);
-            var cloud = "fedocumentsstorage/DSign/Temp/" + pathEndFileWork;
+            var cloud = (string.IsNullOrWhiteSpace(request.cloudOriginPath)) ? "fedocumentsstorage/DSign/Temp/" + pathEndFileWork : $"fedocumentsstorage/{request.cloudOriginPath}";
             var p12File = _workPath + _dirSeparator + request.clave + ".p12";
             try
             {
@@ -65,7 +65,8 @@ namespace FactureronlineUtility.Controllers
 
                 var result = executeSign.ExecuteSign(request.base64p12, request.p12pass, p12File, xml);
                 var xmlFileInfo = _workPath + _dirSeparator + request.clave + "_signed.xml";
-                var uploadResult2 = _digital.UploadFile(cloud, result.Path, request.clave + "_signed.xml");
+                var cloudSaveSigned = (string.IsNullOrWhiteSpace(request.cloudDestinationPath)) ? cloud : $"fedocumentsstorage/{request.cloudDestinationPath}";
+                var uploadResult2 = _digital.UploadFile(cloudSaveSigned, result.Path, request.clave + "_signed.xml");
                 if (!uploadResult2)
                     throw new Exception("Fail to upload cloud xml signed");
                 else
