@@ -32,11 +32,12 @@ namespace FactureronlineUtility.Controllers
             var tempFilePath = Path.GetTempFileName();
             FileInfo tempInfo = new FileInfo(tempFilePath);
             _workPath = tempInfo.DirectoryName;
-            _digital = new DigitalOceanUtil.DigitalOceanMannager(Environment.GetEnvironmentVariable("AWS_ACCESS_KEY"),
-                 Environment.GetEnvironmentVariable("AWS_SECRET_KEY"),
+            _digital = new DigitalOceanUtil.DigitalOceanMannager(Utility.getAWSConfig(_configuration, "AccessKey"),
+                 Utility.getAWSConfig(_configuration, "SecretKey"),
                   Amazon.RegionEndpoint.USWest2,
                  Utility.getAWSConfig(_configuration, "UrlBucket")
                 );
+
         }
         [HttpPost]
         [Route("xadesPost")]
