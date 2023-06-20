@@ -35,7 +35,7 @@ namespace FactureronlineUtility.Controllers
             _digital = new DigitalOceanUtil.DigitalOceanMannager(Environment.GetEnvironmentVariable("AWS_ACCESS_KEY"),
                 Environment.GetEnvironmentVariable("AWS_SECRET_KEY"),
                  Amazon.RegionEndpoint.USWest2,
-                 Utility.getAWSConfig(_configuration, "UrlBucket")
+                Environment.GetEnvironmentVariable("URL_BUCKET")
                 );
 
         }
@@ -44,7 +44,9 @@ namespace FactureronlineUtility.Controllers
         public JObject PostXades([FromBody]SignRequest request)
         {
             var pathEndFileWork = Utility.getFechaFromClave(request.clave);
-            var cloud = (string.IsNullOrWhiteSpace(request.cloudOriginPath)) ? "fedocumentsstorage/DSign/Temp/" + pathEndFileWork : $"fedocumentsstorage/{request.cloudOriginPath}";
+            var cloud = (string.IsNullOrWhiteSpace(request.cloudOriginPath)) 
+                ? $"{Environment.GetEnvironmentVariable("CLOUD_DEFAULT_ORIGIN")}/" + pathEndFileWork 
+                : $"{Environment.GetEnvironmentVariable("BUCKET_BASE")}/{request.cloudOriginPath}";
             var p12File = _workPath + _dirSeparator + request.clave + ".p12";
             try
             {
