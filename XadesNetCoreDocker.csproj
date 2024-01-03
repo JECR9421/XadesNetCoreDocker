@@ -19,8 +19,8 @@
 
   <ItemGroup>
     <Reference Include="DigitalOceanUtil">
-      <HintPath>DigitalOceanUtil.dll</HintPath>
-      <Private>true</Private>
+      <HintPath>..\FEFilesUtilDocker\DigitalOceanUtil.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
 
