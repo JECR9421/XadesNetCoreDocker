@@ -5,6 +5,7 @@
     <UserSecretsId>cc78c237-5ed8-4656-8f92-583f613d3c75</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
+    <DockerfileRunEnvironmentFiles>settings.env</DockerfileRunEnvironmentFiles>
   </PropertyGroup>
 
   <ItemGroup>
