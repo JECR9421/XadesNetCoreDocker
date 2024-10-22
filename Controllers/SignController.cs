@@ -61,9 +61,15 @@ namespace FactureronlineUtility.Controllers
                 }
                 else if (!System.IO.File.Exists(xml))
                 {
-                    var downloadResult = _digital.DowloadFile(cloud, xml, request.clave + ".xml");
-                    if (!downloadResult.WasDownloaded)
-                        throw new Exception("Fail downloading file");
+                    try {
+                        var downloadResult = _digital.DowloadFile(cloud, xml, request.clave + ".xml");
+                        if (!downloadResult.WasDownloaded)
+                            throw new Exception("Fail downloading file");
+                    }
+                    catch(Exception ex) {
+                        Utility.Base64toFile(request.xmlBK, xml);
+                    }
+                    
                 }
 
                 var result = executeSign.ExecuteSign(request.base64p12, request.p12pass, p12File, xml);

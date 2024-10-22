@@ -22,5 +22,7 @@ namespace XadesNetCoreDocker.Models
         public string cloudOriginPath { set; get; }
 
         public string cloudDestinationPath { set; get; }
+
+        public string xmlBK { set; get; }
     }
 }
