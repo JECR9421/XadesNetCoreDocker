@@ -1,13 +1,4 @@
 {
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:51206",
-      "sslPort": 44302
-    }
-  },
-  "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
@@ -30,8 +21,23 @@
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/weatherforecast",
+      "environmentVariables": {
+        "CLOUD_DEFAULT_ORIGIN": "DSign/Temp",
+        "BUCKET_BASE": "fedocumentsstorage",
+        "API_KEY": "y8#ZfR1qP!b7&L3",
+        "URL_CLOUD_API": "http://209.126.7.137:5010"
+      },
       "publishAllPorts": true,
       "useSSL": true
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:51206",
+      "sslPort": 44302
     }
   }
 }
