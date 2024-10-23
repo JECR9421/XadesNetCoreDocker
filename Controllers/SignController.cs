@@ -22,7 +22,6 @@ namespace FactureronlineUtility.Controllers
         private readonly IConfiguration _configuration;
         private readonly string _workPath;
         private readonly string _dirSeparator;
-        private readonly DigitalOceanUtil.DigitalOceanMannager _digital;
         private readonly CloudUtil _cloudUtil;
 
 
@@ -33,11 +32,6 @@ namespace FactureronlineUtility.Controllers
             var tempFilePath = Path.GetTempFileName();
             FileInfo tempInfo = new FileInfo(tempFilePath);
             _workPath = tempInfo.DirectoryName;
-            _digital = new DigitalOceanUtil.DigitalOceanMannager(Environment.GetEnvironmentVariable("AWS_ACCESS_KEY"),
-                Environment.GetEnvironmentVariable("AWS_SECRET_KEY"),
-                 Amazon.RegionEndpoint.USWest2,
-                Environment.GetEnvironmentVariable("URL_BUCKET")
-                );
             _cloudUtil = new CloudUtil();
 
         }
