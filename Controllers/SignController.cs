@@ -22,8 +22,8 @@ namespace FactureronlineUtility.Controllers
         private readonly IConfiguration _configuration;
         private readonly string _workPath;
         private readonly string _dirSeparator;
-        private readonly DigitalOceanUtil.DigitalOceanMannager _digital;
-        
+        private readonly CloudUtil _cloudUtil;
+
 
         public SignController(IConfiguration configuration) 
         {
@@ -32,21 +32,17 @@ namespace FactureronlineUtility.Controllers
             var tempFilePath = Path.GetTempFileName();
             FileInfo tempInfo = new FileInfo(tempFilePath);
             _workPath = tempInfo.DirectoryName;
-            _digital = new DigitalOceanUtil.DigitalOceanMannager(Environment.GetEnvironmentVariable("AWS_ACCESS_KEY"),
-                Environment.GetEnvironmentVariable("AWS_SECRET_KEY"),
-                 Amazon.RegionEndpoint.USWest2,
-                Environment.GetEnvironmentVariable("URL_BUCKET")
-                );
+            _cloudUtil = new CloudUtil();
 
         }
         [HttpPost]
         [Route("xadesPost")]
-        public JObject PostXades([FromBody]SignRequest request)
+        public async Task<JObject> PostXades([FromBody]SignRequest request)
         {
             var pathEndFileWork = Utility.getFechaFromClave(request.clave);
-            var cloud = (string.IsNullOrWhiteSpace(request.cloudOriginPath)) 
+            var cloudPath = (string.IsNullOrWhiteSpace(request.cloudOriginPath)) 
                 ? $"{Environment.GetEnvironmentVariable("CLOUD_DEFAULT_ORIGIN")}/" + pathEndFileWork 
-                : $"{Environment.GetEnvironmentVariable("BUCKET_BASE")}/{request.cloudOriginPath}";
+                : request.cloudOriginPath;
             var p12File = _workPath + _dirSeparator + request.clave + ".p12";
             try
             {
@@ -55,15 +51,15 @@ namespace FactureronlineUtility.Controllers
                 if (!string.IsNullOrWhiteSpace(request.xmlToSign))
                 {
                     Utility.Base64toFile(request.xmlToSign, xml);
-                    var uploadResult = _digital.UploadFile(cloud, xml, request.clave + ".xml");
+                    var uploadResult = await _cloudUtil.doUploadToCloudAsync(xml, cloudPath, $"{request.clave}.xml");
                     if (!uploadResult)
                         throw new Exception("Fail to upload cloud xml pre sign");
                 }
                 else if (!System.IO.File.Exists(xml))
                 {
                     try {
-                        var downloadResult = _digital.DowloadFile(cloud, xml, request.clave + ".xml");
-                        if (!downloadResult.WasDownloaded)
+                        var downloadResult = await _cloudUtil.doDownloadFileToPath(cloudPath, $"{request.clave}.xml", xml);
+                        if (!downloadResult)
                             throw new Exception("Fail downloading file");
                     }
                     catch(Exception ex) {
@@ -74,8 +70,8 @@ namespace FactureronlineUtility.Controllers
 
                 var result = executeSign.ExecuteSign(request.base64p12, request.p12pass, p12File, xml);
                 var xmlFileInfo = _workPath + _dirSeparator + request.clave + "_signed.xml";
-                var cloudSaveSigned = (string.IsNullOrWhiteSpace(request.cloudDestinationPath)) ? cloud : $"fedocumentsstorage/{request.cloudDestinationPath}";
-                var uploadResult2 = _digital.UploadFile(cloudSaveSigned, result.Path, request.clave + "_signed.xml");
+                var cloudSaveSigned = (string.IsNullOrWhiteSpace(request.cloudDestinationPath)) ? cloudPath : request.cloudDestinationPath;
+                var uploadResult2 = await _cloudUtil.doUploadToCloudAsync(result.Path, cloudSaveSigned, $"{request.clave}_signed.xml");
                 if (!uploadResult2)
                     throw new Exception("Fail to upload cloud xml signed");
                 else
