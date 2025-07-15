@@ -91,5 +91,27 @@ namespace FactureronlineUtility.Controllers
                 return JObject.FromObject(response);
             }
         }
+
+        [HttpPost]
+        [Route("getP12ExpirationDate")]
+        public JObject GetP12ExpirationDate(int codCia, bool doUpdate, [FromBody] P12RequestInfo request)
+        {
+            var response = new JObject();
+            response.Add("Error", 0);
+            try
+            {
+                var xadesService = new XadesSignService();
+                var date = xadesService.GetExpirationDate(request.Base64, request.Pass);
+                response.Add("Date", date);
+            }
+            catch (Exception ex)
+            {
+                response.Remove("Error");
+                response.Add("Error", -1);
+                response.Add("Msg", ex.Message);
+            }
+
+            return response;
+        }
     }
 }

@@ -54,5 +54,19 @@ namespace XadesNetCoreDocker.Services
                 Base64 = Utility.fileToBase64(xmlFileInfo)
             };
         }
+
+        public DateTime GetExpirationDate(string p12CertBase64, string passP12)
+        {
+
+            X509Certificate2 cert = new X509Certificate2(Convert.FromBase64String(p12CertBase64), passP12,
+             X509KeyStorageFlags.Exportable | X509KeyStorageFlags.PersistKeySet);
+
+            var date = cert.GetExpirationDateString();
+
+            var expirates = Convert.ToDateTime(date);
+
+            return expirates;
+        }
+
     }
 }
